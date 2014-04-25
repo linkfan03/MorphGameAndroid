@@ -13,12 +13,25 @@ public class LoadingScreen extends Screen {
 
     @Override
     public void update(float deltaTime) {
+    	//RGB565 takes up least amount of memory
+    	//ARGB4444 when transparency could be needed
         Graphics g = game.getGraphics();
         Assets.menu = g.newImage("menu.png", ImageFormat.RGB565);
+        Assets.button = g.newImage("button.jpg", ImageFormat.RGB565);
         Assets.background = g.newImage("backgroundMockUp1.png", ImageFormat.RGB565);
-        Assets.character = g.newImage("character.png", ImageFormat.ARGB4444);
-        Assets.characterDown = g.newImage("characterDown.png", ImageFormat.ARGB4444);
-        Assets.characterJump = g.newImage("characterJump.png", ImageFormat.ARGB4444);
+        Assets.square = g.newImage("square.png", ImageFormat.ARGB4444);
+        Assets.squareDown = g.newImage("squareDown.png", ImageFormat.ARGB4444);
+        Assets.squareBack = g.newImage("squareBack.png", ImageFormat.ARGB4444);
+        Assets.squareForward = g.newImage("squareForward.png", ImageFormat.ARGB4444);
+        Assets.squareJump = g.newImage("squareJump.png", ImageFormat.ARGB4444);
+        
+        
+        Assets.tiledirt = g.newImage("tiledirt.png", ImageFormat.RGB565);
+        Assets.tilegrassTop = g.newImage("tilegrasstop.png", ImageFormat.RGB565);
+        Assets.tilegrassMorph = g.newImage("tilegrassbot.png", ImageFormat.RGB565);
+        Assets.tilegrassLeft = g.newImage("tilegrassleft.png", ImageFormat.RGB565);
+        Assets.tilegrassRight = g.newImage("tilegrassright.png", ImageFormat.RGB565);
+		Assets.tileSpike = g.newImage("tileSpike.png", ImageFormat.RGB565);
         
 
         

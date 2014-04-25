@@ -23,14 +23,10 @@ public class MainMenuScreen extends Screen {
         for (int i = 0; i < len; i++) {
             TouchEvent event = touchEvents.get(i);
             if (event.type == TouchEvent.TOUCH_UP) {
-
-
-                if (inBounds(event, 0, 0, 250, 250)) {
+                if (inBounds(event, 50, 350, 250, 450)) {
                     //START GAME
-                                game.setScreen(new GameScreen(game));               
-      }
-
-
+                    game.setScreen(new GameScreen(game));               
+            	}
             }
         }
     }
@@ -75,7 +71,7 @@ public class MainMenuScreen extends Screen {
     @Override
     public void backButton() {
         //Display "Exit Game?" Box
-
+    	android.os.Process.killProcess(android.os.Process.myPid());
 
     }
 }

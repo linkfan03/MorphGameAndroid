@@ -41,11 +41,11 @@ public class GameScreen extends Screen {
 		bg2 = new Background(2160, 0);
 		mainCharacter = new MainCharacter();
 
-		character = Assets.character;
-		characterForward = Assets.characterForward;
-		characterBack = Assets.characterBack;
-		characterDown = Assets.characterDown;
-		characterJump = Assets.characterJump;
+		character = Assets.square;
+		characterForward = Assets.squareForward;
+		characterBack = Assets.squareBack;
+		characterDown = Assets.squareDown;
+		characterJump = Assets.squareJump;
 
 		currentSprite = character;
 
@@ -145,13 +145,13 @@ public class GameScreen extends Screen {
 
 				if (inBounds(event, 0, 285, 65, 65)) {
 					mainCharacter.jump();
-					currentSprite = Assets.characterJump;
+					currentSprite = characterJump;
 					mainCharacter.setDucked(false);
 				}
 
 				else if (inBounds(event, 0, 415, 65, 65)
 						&& mainCharacter.isJumped() == false) {
-					currentSprite = Assets.characterDown;
+					currentSprite = characterDown;
 					mainCharacter.setDucked(true);
 					mainCharacter.setSpeedX(0);
 
@@ -169,7 +169,7 @@ public class GameScreen extends Screen {
 			if (event.type == TouchEvent.TOUCH_UP) {
 
 				if (inBounds(event, 0, 415, 65, 65)) {
-					currentSprite = Assets.character;
+					currentSprite = character;
 					mainCharacter.setDucked(false);
 
 				}
@@ -198,9 +198,9 @@ public class GameScreen extends Screen {
 		// For example, mainCharacter.update();
 		mainCharacter.update();
 		if (mainCharacter.isJumped()) {
-			currentSprite = Assets.characterJump;
+			currentSprite = characterJump;
 		} else if (mainCharacter.isJumped() == false && mainCharacter.isDucked() == false) {
-			currentSprite = Assets.character;
+			currentSprite = character;
 		}
 
 		updateTiles();

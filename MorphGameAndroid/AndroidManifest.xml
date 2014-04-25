@@ -12,12 +12,13 @@
         android:targetSdkVersion="17" />
 
     <application
+        android:icon="@drawable/icon"
        android:label="Morph Game" >
         <activity
-           android:icon="@drawable/icon"
            android:name="com.kilobolt.morphgame.MorphGame"
            android:configChanges="keyboard|keyboardHidden|orientation"
            android:label="Morph Game"
+           android:adjustViewBounds="true"
            android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
