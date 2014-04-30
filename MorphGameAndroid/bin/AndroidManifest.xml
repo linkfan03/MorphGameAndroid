@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kilobolt.androidgame"
+    package="com.morphgroup.androidgame"
     android:versionCode="1"
     android:versionName="1.0" >
     
@@ -15,9 +15,10 @@
         android:icon="@drawable/icon"
        android:label="Morph Game" >
         <activity
-           android:name="com.kilobolt.morphgame.MorphGame"
+           android:name="com.morphgame.morphgame.MorphGame"
            android:configChanges="keyboard|keyboardHidden|orientation"
            android:label="Morph Game"
+           android:adjustViewBounds="true"
            android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
