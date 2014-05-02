@@ -320,6 +320,7 @@ public class GameScreen extends Screen {
 	}
 
 	private void drawReadyUI() {
+		//Ready screen
 		Graphics g = game.getGraphics();
 
 		g.drawARGB(155, 0, 0, 0);

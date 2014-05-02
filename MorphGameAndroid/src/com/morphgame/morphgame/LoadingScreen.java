@@ -15,6 +15,8 @@ public class LoadingScreen extends Screen {
     public void update(float deltaTime) {
     	//RGB565 takes up least amount of memory
     	//ARGB4444 when transparency could be needed
+    	
+    	//Load the necessary assets
         Graphics g = game.getGraphics();
         Assets.menu = g.newImage("menu.png", ImageFormat.RGB565);
         Assets.button = g.newImage("button.jpg", ImageFormat.RGB565);
@@ -34,7 +36,7 @@ public class LoadingScreen extends Screen {
 		Assets.tileSpike = g.newImage("tileSpike.png", ImageFormat.RGB565);
         
 
-        
+        //Show the menu screen
         game.setScreen(new MainMenuScreen(game));
 
 
