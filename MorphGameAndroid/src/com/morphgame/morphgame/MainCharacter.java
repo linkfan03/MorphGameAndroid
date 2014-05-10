@@ -24,8 +24,8 @@ public class MainCharacter {
 	public static Rect footleft = new Rect(0, 0, 0, 0);
 	public static Rect footright = new Rect(0, 0, 0, 0);
 
-	private static Background bg1 = GameScreen.getBg1();
-	private static Background bg2 = GameScreen.getBg2();
+	private Background bg1 = GameScreen.getBg1();
+	private Background bg2 = GameScreen.getBg2();
 
 	private int jumpSpeed = -15;
 	private int speedX = 0;
@@ -146,12 +146,12 @@ public class MainCharacter {
 	public int getSpeedY() {
 		return speedY;
 	}
-	
-	public boolean getTouchingSpikes(){
+
+	public boolean getTouchingSpikes() {
 		return touchingSpikes;
 	}
-	
-	public void setTouchingSpikes(boolean touchingSpikes){
+
+	public void setTouchingSpikes(boolean touchingSpikes) {
 		this.touchingSpikes = touchingSpikes;
 	}
 

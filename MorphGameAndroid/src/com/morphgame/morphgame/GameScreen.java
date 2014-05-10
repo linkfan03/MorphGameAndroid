@@ -192,6 +192,9 @@ public class GameScreen extends Screen {
 		if (livesLeft == 0) {
 			state = GameState.GameOver;
 		}
+		if(mainCharacter.getTouchingSpikes()){
+			state = GameState.GameOver;
+		}
 
 		// 3. Call individual update() methods here.
 		// This is where all the game updates happen.
