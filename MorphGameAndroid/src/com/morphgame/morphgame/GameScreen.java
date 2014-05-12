@@ -16,7 +16,7 @@ import com.morphgame.framework.Input.TouchEvent;
 
 public class GameScreen extends Screen {
 	enum GameState {
-		Ready, Running, Paused, GameOver
+		Ready, Running, Paused, GameOver, LeaderBoard
 	}
 
 	GameState state = GameState.Ready;
@@ -25,13 +25,15 @@ public class GameScreen extends Screen {
 
 	private static Background bg1, bg2;
 	private static MainCharacter mainCharacter;
+	
+	private static LeaderBoard leaderBoard;
 
 	private Image currentSprite, character, characterForward, characterBack, characterDown, characterJump;
 
 	private ArrayList tilearray = new ArrayList();
 
 	int livesLeft = 1;
-	Paint paint, paint2, paint3;
+	Paint paint, paint2, paint3, paint4;
 
 	public GameScreen(Game game) {
 		super(game);
@@ -67,6 +69,11 @@ public class GameScreen extends Screen {
 		paint3.setAntiAlias(true);
 		paint3.setColor(Color.BLACK);
 
+		paint4 = new Paint();
+		paint4.setTextSize(60);
+		paint4.setTextAlign(Paint.Align.CENTER);
+		paint4.setAntiAlias(true);
+		paint4.setColor(Color.WHITE);
 
 	}
 	
@@ -152,7 +159,11 @@ public class GameScreen extends Screen {
 			updatePaused(touchEvents);
 		if (state == GameState.GameOver)
 			updateGameOver(touchEvents);
+		if( state == GameState.LeaderBoard)
+			updateLeaderBoard();
 	}
+
+	
 
 	private void updateReady(List touchEvents) {
 
@@ -296,18 +307,25 @@ public class GameScreen extends Screen {
 	}
 
 	private void updateGameOver(List touchEvents) {
+		
 		int len = touchEvents.size();
 		for (int i = 0; i < len; i++) {
 			TouchEvent event = (TouchEvent) touchEvents.get(i);
 			if (event.type == TouchEvent.TOUCH_DOWN) {
-				if (inBounds(event, 0, 0, 800, 480)) {
+				//return
+				//inBounds(TouchEvent event, int x, int y, int width, int height)
+				if (inBounds(event, 400, 360, 100, 60)) {
 					nullify();
 					game.setScreen(new MainMenuScreen(game));
 					return;
 				}
 			}
 		}
-
+	}
+	
+	private void updateLeaderBoard() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private void updateTiles() {
@@ -341,7 +359,8 @@ public class GameScreen extends Screen {
 			drawPausedUI();
 		if (state == GameState.GameOver)
 			drawGameOverUI();
-
+		if(state == GameState.LeaderBoard)
+			drawLeaderBoard();
 	}
 
 	private void paintTiles(Graphics g) {
@@ -406,9 +425,18 @@ public class GameScreen extends Screen {
 	private void drawGameOverUI() {
 		Graphics g = game.getGraphics();
 		g.drawRect(0, 0, 1281, 801, Color.BLACK);
-		g.drawString("GAME OVER.", 400, 240, paint2);
-		g.drawString("Tap to return.", 400, 290, paint);
+		g.drawString("GAME OVER.", 400, 200, paint2);
+		g.drawString("Score: " + mainCharacter.getScore(),400,280,paint4);
+		g.drawString("Return", 400, 360, paint4);
+		
+		
 
+	}
+	private void drawLeaderBoard(){
+		//displays top ten in leaderboard
+		Graphics g = game.getGraphics();
+		g.drawRect(0, 0, 1281, 801, Color.BLACK);
+		g.drawString(leaderBoard.getScores(10),275,0,paint);
 	}
 
 	@Override

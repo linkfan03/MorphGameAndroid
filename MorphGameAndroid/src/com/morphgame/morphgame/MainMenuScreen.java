@@ -23,7 +23,12 @@ public class MainMenuScreen extends Screen {
         for (int i = 0; i < len; i++) {
             TouchEvent event = touchEvents.get(i);
             if (event.type == TouchEvent.TOUCH_UP) {
-                if (inBounds(event, 50, 350, 250, 450)) {
+                if (inBounds(event, 50, 350, 150, 450)) {
+                    //START GAME
+                    game.setScreen(new GameScreen(game));               
+            	}
+                
+                if (inBounds(event, 250, 350, 250, 450)) {
                     //START GAME
                     game.setScreen(new GameScreen(game));               
             	}
