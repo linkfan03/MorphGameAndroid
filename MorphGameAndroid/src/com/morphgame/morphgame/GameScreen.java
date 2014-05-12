@@ -1,6 +1,7 @@
 package com.morphgame.morphgame;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -63,6 +64,7 @@ public class GameScreen extends Screen {
 	}
 	
 	private void squareImages(){
+		mainCharacter.setMorph("square");
 		character = Assets.square;
 		characterForward = Assets.squareForward;
 		characterBack = Assets.squareBack;
@@ -71,6 +73,7 @@ public class GameScreen extends Screen {
 	}
 	
 	private void circleImages(){
+		mainCharacter.setMorph("circle");
 		character = Assets.circle;
 		characterForward = Assets.circleForward;
 		characterBack = Assets.circleBack;
@@ -80,6 +83,7 @@ public class GameScreen extends Screen {
 	}
 	
 	private void balloonImages(){
+		mainCharacter.setMorph("balloon");
 		character = Assets.balloon;
 		characterForward = Assets.balloonForward;
 		characterBack = Assets.balloonBack;
@@ -168,9 +172,10 @@ public class GameScreen extends Screen {
 					mainCharacter.jump();
 					currentSprite = characterJump;
 					mainCharacter.setDucked(false);
-				}
-
-				else if (inBounds(event, 0, 415, 65, 65)
+				}else if (inBounds(event, 0,350,65,65)){
+					changeMorph();
+					
+				}else if (inBounds(event, 0, 415, 65, 65)
 						&& mainCharacter.isJumped() == false) {
 					currentSprite = characterDown;
 					mainCharacter.setDucked(true);
@@ -242,7 +247,18 @@ public class GameScreen extends Screen {
 			state = GameState.GameOver;
 		}
 	}
-
+	
+	public void changeMorph(){
+		if(mainCharacter.getMorph().equals("square")){
+			circleImages();
+		}else if(mainCharacter.getMorph().equals("circle")){
+			balloonImages();
+		}else if(mainCharacter.getMorph().equals("balloon")){
+			squareImages();
+		}
+	}
+	
+	
 	private boolean inBounds(TouchEvent event, int x, int y, int width,
 			int height) {
 		if (event.x > x && event.x < x + width - 1 && event.y > y
@@ -362,6 +378,7 @@ public class GameScreen extends Screen {
 	private void drawRunningUI() {
 		Graphics g = game.getGraphics();
 		g.drawImage(Assets.button, 0, 285, 0, 0, 65, 65);//jump
+		g.drawImage(Assets.buttonMorph, 0, 350,0,0,65,65);//morph
 		g.drawImage(Assets.button, 0, 415, 0, 130, 65, 65);//down
 		g.drawImage(Assets.button, 0, 0, 0, 195, 35, 35);//pause button
 

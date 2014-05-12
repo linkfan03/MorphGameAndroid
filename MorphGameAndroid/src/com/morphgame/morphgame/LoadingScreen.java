@@ -20,6 +20,7 @@ public class LoadingScreen extends Screen {
         Graphics g = game.getGraphics();
         Assets.menu = g.newImage("menu.png", ImageFormat.RGB565);
         Assets.button = g.newImage("button.jpg", ImageFormat.RGB565);
+        Assets.buttonMorph = g.newImage("buttonMorph.jpg", ImageFormat.RGB565);
         Assets.background = g.newImage("backgroundMockUp1.png", ImageFormat.RGB565);
         Assets.square = g.newImage("square.png", ImageFormat.ARGB4444);
         Assets.down = g.newImage("squareDown.png", ImageFormat.ARGB4444);
