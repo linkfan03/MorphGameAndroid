@@ -31,7 +31,7 @@ public class GameScreen extends Screen {
 	private ArrayList tilearray = new ArrayList();
 
 	int livesLeft = 1;
-	Paint paint, paint2;
+	Paint paint, paint2, paint3;
 
 	public GameScreen(Game game) {
 		super(game);
@@ -60,6 +60,13 @@ public class GameScreen extends Screen {
 		paint2.setTextAlign(Paint.Align.CENTER);
 		paint2.setAntiAlias(true);
 		paint2.setColor(Color.WHITE);
+		
+		paint3 = new Paint();
+		paint3.setTextSize(40);
+		paint3.setTextAlign(Paint.Align.CENTER);
+		paint3.setAntiAlias(true);
+		paint3.setColor(Color.BLACK);
+
 
 	}
 	
@@ -377,6 +384,9 @@ public class GameScreen extends Screen {
 
 	private void drawRunningUI() {
 		Graphics g = game.getGraphics();
+		
+		g.drawString(Integer.toString(mainCharacter.getScore()), 750,50, paint3);
+		
 		g.drawImage(Assets.button, 0, 285, 0, 0, 65, 65);//jump
 		g.drawImage(Assets.buttonMorph, 0, 350,0,0,65,65);//morph
 		g.drawImage(Assets.button, 0, 415, 0, 130, 65, 65);//down
