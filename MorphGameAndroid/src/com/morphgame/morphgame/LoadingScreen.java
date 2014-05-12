@@ -22,10 +22,20 @@ public class LoadingScreen extends Screen {
         Assets.button = g.newImage("button.jpg", ImageFormat.RGB565);
         Assets.background = g.newImage("backgroundMockUp1.png", ImageFormat.RGB565);
         Assets.square = g.newImage("square.png", ImageFormat.ARGB4444);
-        Assets.squareDown = g.newImage("squareDown.png", ImageFormat.ARGB4444);
+        Assets.down = g.newImage("squareDown.png", ImageFormat.ARGB4444);
         Assets.squareBack = g.newImage("squareBack.png", ImageFormat.ARGB4444);
         Assets.squareForward = g.newImage("squareForward.png", ImageFormat.ARGB4444);
         Assets.squareJump = g.newImage("squareJump.png", ImageFormat.ARGB4444);
+        
+        Assets.circle = g.newImage("circle.png", ImageFormat.ARGB4444);
+        Assets.circleBack = g.newImage("circleBack.png", ImageFormat.ARGB4444);
+        Assets.circleForward = g.newImage("circleForward.png", ImageFormat.ARGB4444);
+        Assets.circleJump = g.newImage("circleJump.png", ImageFormat.ARGB4444);
+        
+        Assets.balloon = g.newImage("balloon.png", ImageFormat.ARGB4444);
+        Assets.balloonBack = g.newImage("balloonBack.png", ImageFormat.ARGB4444);
+        Assets.balloonForward = g.newImage("balloonForward.png", ImageFormat.ARGB4444);
+       
         
         
         Assets.tiledirt = g.newImage("tiledirt.png", ImageFormat.RGB565);

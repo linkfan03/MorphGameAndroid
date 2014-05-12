@@ -41,12 +41,8 @@ public class GameScreen extends Screen {
 		bg2 = new Background(2160, 0);
 		mainCharacter = new MainCharacter();
 
-		character = Assets.square;
-		characterForward = Assets.squareForward;
-		characterBack = Assets.squareBack;
-		characterDown = Assets.squareDown;
-		characterJump = Assets.squareJump;
-
+		
+		squareImages();
 		currentSprite = character;
 
 		loadMap();
@@ -64,6 +60,31 @@ public class GameScreen extends Screen {
 		paint2.setAntiAlias(true);
 		paint2.setColor(Color.WHITE);
 
+	}
+	
+	private void squareImages(){
+		character = Assets.square;
+		characterForward = Assets.squareForward;
+		characterBack = Assets.squareBack;
+		characterDown = Assets.down;
+		characterJump = Assets.squareJump;
+	}
+	
+	private void circleImages(){
+		character = Assets.circle;
+		characterForward = Assets.circleForward;
+		characterBack = Assets.circleBack;
+		characterDown = Assets.down;
+		characterJump = Assets.circleJump;
+		
+	}
+	
+	private void balloonImages(){
+		character = Assets.balloon;
+		characterForward = Assets.balloonForward;
+		characterBack = Assets.balloonBack;
+		characterJump = character;
+		characterDown = character;
 	}
 
 	private void loadMap() {
@@ -161,7 +182,7 @@ public class GameScreen extends Screen {
 					// Move right.
 					mainCharacter.moveRight();
 					mainCharacter.setMovingRight(true);
-
+					
 				}
 
 			}
@@ -198,11 +219,18 @@ public class GameScreen extends Screen {
 
 		// 3. Call individual update() methods here.
 		// This is where all the game updates happen.
-		// For example, mainCharacter.update();
+		// For example, .mainCharacter.update();
 		mainCharacter.update();
-		if (mainCharacter.isJumped()) {
+	
+		if(mainCharacter.isDucked()){
+			currentSprite = characterDown;
+		}else if(mainCharacter.isMovingRight()){
+			currentSprite = characterForward;
+		}else if(mainCharacter.isMovingLeft()){
+			currentSprite = characterBack;
+		}else if (mainCharacter.isJumped()) {
 			currentSprite = characterJump;
-		} else if (mainCharacter.isJumped() == false && mainCharacter.isDucked() == false) {
+		}else{
 			currentSprite = character;
 		}
 
