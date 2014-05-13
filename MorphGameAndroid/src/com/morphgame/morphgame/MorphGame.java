@@ -11,6 +11,7 @@ import com.morphgroup.androidgame.R;
 import com.morphgame.framework.Screen;
 import com.morphgroup.framework.implementation.AndroidGame;
 
+//the morph game class loads the map and drives the game forward
 
 public class MorphGame extends AndroidGame {
 	public static String map;
