@@ -1,5 +1,7 @@
 package com.morphgame.morphgame;
 
+//The background class provides the necessary specs for the scrolling background image
+
 public class Background {
 	private int bgX, bgY, speedX;
 
