@@ -6,6 +6,9 @@ import com.morphgame.framework.Graphics;
 import com.morphgame.framework.Screen;
 import com.morphgame.framework.Input.TouchEvent;
 
+
+//the instruction screen class loads the instruction screen image 
+
 public class InstructionScreen extends Screen {
 	
 	public InstructionScreen(Game game){
