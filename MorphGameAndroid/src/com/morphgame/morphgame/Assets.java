@@ -4,6 +4,8 @@ import com.morphgame.framework.Image;
 
 import com.morphgame.framework.Sound;
 
+
+//The assets class instantiates all of the images that are required for the game.
 public class Assets {
 	public static Image menu, InstructionMenu, button, background, splash,buttonMorph;
 	public static Image tileSpike, tilegrassMorph, tiledirt,  tilegrassTop, tilegrassBot, tilegrassLeft, tilegrassRight;
