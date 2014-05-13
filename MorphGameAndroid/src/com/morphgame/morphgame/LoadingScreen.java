@@ -6,6 +6,8 @@ import com.morphgame.framework.Graphics;
 import com.morphgame.framework.Screen;
 import com.morphgame.framework.Graphics.ImageFormat;
 
+//the loading screen class loads all the assets and associates them with the proper image
+
 public class LoadingScreen extends Screen {
 
 
