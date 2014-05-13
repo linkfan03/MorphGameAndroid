@@ -1,0 +1,12 @@
+package com.morphgame.morphgame;
+
+import java.util.List;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
+
+public class DatabaseActivity {
+
+}
