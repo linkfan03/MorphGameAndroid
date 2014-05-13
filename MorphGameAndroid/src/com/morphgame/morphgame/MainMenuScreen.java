@@ -9,6 +9,8 @@ import com.morphgame.framework.Graphics;
 import com.morphgame.framework.Screen;
 import com.morphgame.framework.Input.TouchEvent;
 
+//the main menu screen holds buttons for "play" and "how to", providing access to gameplay or instructions
+
 public class MainMenuScreen extends Screen {
 	public MainMenuScreen(Game game) {
         super(game);
