@@ -1,0 +1,67 @@
+package com.morphgame.morphgame;
+
+import java.io.*;
+
+import android.content.Context;
+
+
+
+public class LeaderBoard {
+	
+	private BufferedWriter writer;
+	
+	public LeaderBoard(){
+	
+	
+	}
+	
+	
+	public void newScore(String newName,int newScore){
+		  String eol = System.getProperty("line.separator");
+		  try {
+		    writer = new BufferedWriter(new OutputStreamWriter(openFileOutput("leaderboard.txt", Context.MODE_PRIVATE)));
+		    writer.write(newName + "Score: "+ newScore +eol);
+
+		  } catch (Exception e) {
+		      e.printStackTrace();
+		  } finally {
+		    if (writer != null) {
+		    try {
+		      writer.close();
+		    } catch (IOException e) {
+		      e.printStackTrace();
+		    }
+		    }
+		  }
+				
+	}
+	
+	private void insert(int j, String newName, int newScore){
+		
+	}
+	
+	public String getScores(){
+		  String eol = System.getProperty("line.separator");
+		  BufferedReader input = null;
+		  String line;
+		  try {
+			 OutputStream instream = new FileOutputStream("leaderboard.txt");
+		    
+		    StringBuffer buffer = new StringBuffer();
+		    while ((line = input.readLine()) != null) {
+		    buffer.append(line + eol);
+		    }
+		  } catch (Exception e) {
+		     e.printStackTrace();
+		  } finally {
+		  if (input != null) {
+		    try {
+		    input.close();
+		    } catch (IOException e) {
+		      e.printStackTrace();
+		    }
+		    }
+		  }
+		return line;
+	}
+}

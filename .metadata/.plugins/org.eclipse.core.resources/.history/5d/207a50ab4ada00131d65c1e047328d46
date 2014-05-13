@@ -1,0 +1,21 @@
+package com.morphgame.morphgame;
+
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
+import android.util.Log;
+
+
+public class LeaderBoard {
+	private void newScore(String data) {
+	    try {
+	        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput("config.txt", Context.MODE_PRIVATE));
+	        outputStreamWriter.write(data);
+	        outputStreamWriter.close();
+	    }
+	    catch (IOException e) {
+	        Log.e("Exception", "File write failed: " + e.toString());
+	    } 
+	}
+
+}

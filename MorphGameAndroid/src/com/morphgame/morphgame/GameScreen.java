@@ -9,6 +9,9 @@ import java.util.Scanner;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+
+import android.app.ListActivity;
+
 import com.morphgame.framework.Game;
 import com.morphgame.framework.Graphics;
 import com.morphgame.framework.Image;
@@ -27,6 +30,7 @@ public class GameScreen extends Screen {
 	private static Background bg1, bg2;
 	private static MainCharacter mainCharacter;
 
+
 	private Image currentSprite, character, characterForward, characterBack, characterDown, characterJump;
 
 	private ArrayList tilearray = new ArrayList();
@@ -42,7 +46,6 @@ public class GameScreen extends Screen {
 		bg1 = new Background(0, 0);
 		bg2 = new Background(2160, 0);
 		mainCharacter = new MainCharacter();
-		
 		
 		squareImages();
 		currentSprite = character;
@@ -108,8 +111,8 @@ public class GameScreen extends Screen {
 		ArrayList lines = new ArrayList();
 		int width = 0;
 		int height = 0;
-
 		Scanner scanner = new Scanner(MorphGame.map);
+
 		while (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
 
@@ -315,14 +318,6 @@ public class GameScreen extends Screen {
 					nullify();
 					goToMenu();
 					return;
-				}if (inBounds(event, 200, 220, 400, 60)) {
-					//TODO ask for user name 
-					//Add score + name to database
-					//send user to menu
-					
-					
-					
-					
 				}
 				
 			}
@@ -428,7 +423,7 @@ public class GameScreen extends Screen {
 		Graphics g = game.getGraphics();
 		g.drawRect(0, 0, 1281, 801, Color.BLACK);
 		g.drawString("GAME OVER.", 400, 100, paint2);
-		g.drawString("Submit Score: " + mainCharacter.getScore(),400,240,paint4);
+		g.drawString("Score: " + mainCharacter.getScore(),400,240,paint4);
 		g.drawString("Return", 400, 380, paint4);
 		
 		

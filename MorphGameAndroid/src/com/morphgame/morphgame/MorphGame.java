@@ -14,6 +14,7 @@ import com.morphgroup.framework.implementation.AndroidGame;
 
 public class MorphGame extends AndroidGame {
 	public static String map;
+	public static String map2;
     boolean firstTimeCreate = true;
 
     @Override
@@ -26,12 +27,19 @@ public class MorphGame extends AndroidGame {
 
         InputStream is = getResources().openRawResource(R.raw.map1);
         map = convertStreamToString(is);
-        
+        is = getResources().openRawResource(R.raw.map2);
+        map2 = convertStreamToString(is);
 
         return new SplashLoadingScreen(this);
 
     }
+    
+    public Screen level2(){
+    	
+        
 
+        return new SplashLoadingScreen(this);
+    }
     @Override
     public void onBackPressed() {
         getCurrentScreen().backButton();

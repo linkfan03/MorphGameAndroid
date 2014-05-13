@@ -1,0 +1,95 @@
+package com.morphgame.morphgame;
+
+import java.util.List;
+
+import android.graphics.Color;
+import android.graphics.Paint;
+
+import com.morphgame.framework.Game;
+import com.morphgame.framework.Graphics;
+import com.morphgame.framework.Screen;
+import com.morphgame.framework.Input.TouchEvent;
+
+
+
+public class LeaderboardScreen extends Screen {
+	
+	public LeaderBoard leaderboard;
+	private Paint paint;
+
+	public LeaderboardScreen(Game game) {
+		super(game);
+		
+		leaderboard = LoadingScreen.leaderboard;
+		// Defining a paint object
+		paint = new Paint();
+		paint.setTextSize(30);
+		paint.setTextAlign(Paint.Align.CENTER);
+		paint.setAntiAlias(true);
+		paint.setColor(Color.WHITE);
+	}
+
+	@Override
+	public void update(float deltaTime) {	
+		Graphics g = game.getGraphics();
+        List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
+        
+		int len = touchEvents.size();
+		for (int i = 0; i < len; i++) {
+			TouchEvent event = (TouchEvent) touchEvents.get(i);
+			if (event.type == TouchEvent.TOUCH_DOWN) {
+				//return
+				//inBounds(TouchEvent event, int x, int y, int width, int height)
+				if (inBounds(event, 400, 430, 70, 60)) {
+					game.setScreen(new MainMenuScreen(game));               
+				}
+			}
+		}	
+	}
+
+	@Override
+	public void paint(float deltaTime) {
+		//displays top ten in leaderboard
+		Graphics g = game.getGraphics();
+		g.drawRect(0, 0, 1281, 801, Color.BLACK);
+		//  if (inBounds(event, 50, 350, 250, 450)) {
+		g.drawString("Back", 400, 440, paint);
+		
+		g.drawString(leaderboard.getScores(), 400, 30, paint);
+
+	}
+
+	
+	private boolean inBounds(TouchEvent event, int x, int y, int width,
+            int height) {
+        if (event.x > x && event.x < x + width - 1 && event.y > y
+                && event.y < y + height - 1)
+            return true;
+        else
+            return false;
+    }
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void resume() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void backButton() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

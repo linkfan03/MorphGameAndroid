@@ -1,0 +1,36 @@
+package com.morphgame.morphgame;
+
+
+
+public class LeaderBoard {
+	stats[] board= new stats[10];
+	public LeaderBoard(){
+		
+	}
+	
+	private void newScore(String newName,int newScore){
+		int i = 0;
+		while(board[i]!=null && i<10){
+			if(board[i].getScore()<newScore){
+				insert(i,newName,newScore);
+			}
+			i++;
+		}
+	   
+	   
+	}
+	
+	private void insert(int i, String newName, int newScore){
+		for(int i = i; i <10;i++){
+			board[i+1]=i;
+		}
+	}
+	
+	private String getScores(){
+		
+		
+		
+		return null;
+	}
+
+}

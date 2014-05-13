@@ -7,6 +7,9 @@ import com.morphgame.framework.Screen;
 import com.morphgame.framework.Graphics.ImageFormat;
 
 public class LoadingScreen extends Screen {
+
+
+
 	public LoadingScreen(Game game) {
         super(game);
 

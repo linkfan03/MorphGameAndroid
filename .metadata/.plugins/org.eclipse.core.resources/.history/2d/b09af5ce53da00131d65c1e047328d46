@@ -1,0 +1,45 @@
+package com.morphgame.morphgame;
+
+import java.io.BufferedWriter;
+import java.io.*;
+
+
+
+public class LeaderBoard {
+	
+	public LeaderBoard(){
+	
+	  String eol = System.getProperty("line.separator");
+	  BufferedWriter writer = null;
+	  try {
+	    writer = new BufferedWriter(new OutputStreamWriter(openFileOutput(fileName, Context.MODE_PRIVATE)));
+	    writer.write("This is a test1." + eol);
+	    writer.write("This is a test2." + eol);
+	  } catch (Exception e) {
+	      e.printStackTrace();
+	  } finally {
+	    if (writer != null) {
+	    try {
+	      writer.close();
+	    } catch (IOException e) {
+	      e.printStackTrace();
+	    }
+	    }
+	  }
+			
+	}
+	
+	
+	public void newScore(String newName,int newScore){
+		
+	}
+	
+	private void insert(int j, String newName, int newScore){
+		
+	}
+	
+	public String getScores(){
+	
+		return null;
+	}
+}

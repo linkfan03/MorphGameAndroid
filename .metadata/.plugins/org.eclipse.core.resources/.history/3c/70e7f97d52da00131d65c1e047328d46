@@ -1,0 +1,27 @@
+package com.morphgame.morphgame;
+
+import java.io.FileOutputStream;
+
+
+
+public class LeaderBoard {
+	
+	public LeaderBoard(){
+	       FileOutputStream fOut = openFileOutput("samplefile.txt");
+
+	}
+	
+	
+	public void newScore(String newName,int newScore){
+		
+	}
+	
+	private void insert(int j, String newName, int newScore){
+		
+	}
+	
+	public String getScores(){
+	
+		return null;
+	}
+}

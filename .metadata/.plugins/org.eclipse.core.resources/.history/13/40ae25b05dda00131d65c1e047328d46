@@ -1,0 +1,68 @@
+package com.morphgame.morphgame;
+
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+//For this I am using SQLite to store our leaderboard data
+//this is just a temporary solution so we can work on other features
+//We will be storing our data using google play game services on the app version
+
+public class LeaderBoard extends SQLiteOpenHelper{
+	
+	  public static final String TABLE_COMMENTS = "comments";
+	  public static final String COLUMN_ID = "_id";
+	  public static final String COLUMN_NAME = "name";
+	  public static final String COLUMN_SCORE = "score";
+
+	  private static final String DATABASE_NAME = "leaderboard.db";
+	  private static final int DATABASE_VERSION = 1;
+	  
+	  private int score;
+	private String name;
+	  
+	  // Database creation sql statement
+	  private static final String DATABASE_CREATE = "create table "
+	      + TABLE_COMMENTS + "(" + COLUMN_ID
+	      + " integer primary key autoincrement, " + COLUMN_NAME
+	      + " text not null, COLUMN_SCORE text not null); ";
+	
+	  
+	public LeaderBoard(Context context) {
+	    super(context, DATABASE_NAME, null, DATABASE_VERSION);
+	  }
+	
+	  @Override
+	  public void onCreate(SQLiteDatabase database) {
+	    database.execSQL(DATABASE_CREATE);
+	  }
+
+	  @Override
+	  public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+	    Log.w(LeaderBoard.class.getName(),
+	        "Upgrading database from version " + oldVersion + " to "
+	            + newVersion + ", which will destroy all old data");
+	    db.execSQL("DROP TABLE IF EXISTS " + TABLE_COMMENTS);
+	    onCreate(db);
+	  }
+
+	
+
+	
+	public void newScore(int a){
+		score = a; 
+	}
+	
+	public void insertScore(String n){
+		name = n;		
+		database.insert(COLUMN_ID,name,score);
+	}
+	
+	public String getScores(int num){
+    	
+		return null;
+	}	
+
+
+}

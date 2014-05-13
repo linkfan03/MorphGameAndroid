@@ -1,0 +1,24 @@
+package com.morphgame.morphgame;
+
+
+
+public class LeaderBoard {
+	stats[] board= new stats[10];
+	public LeaderBoard(){
+		
+	}
+	
+	private void newScore(String newName,int newScore){
+	
+	   
+	   
+	}
+	
+	private String getScores(){
+		
+		
+		
+		return null;
+	}
+
+}

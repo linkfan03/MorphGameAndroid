@@ -1,0 +1,26 @@
+package com.morphgame.morphgame;
+
+
+
+public class LeaderBoard {
+	
+	Scanner in;
+	File file;
+	public LeaderBoard(){
+		
+	}
+	
+	private void newScore(String newName,int newScore){
+	
+	   
+	   
+	}
+	
+	private String getScores(){
+		
+		
+		
+		return null;
+	}
+
+}

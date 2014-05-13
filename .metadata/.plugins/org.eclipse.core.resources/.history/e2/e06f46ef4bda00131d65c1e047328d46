@@ -1,0 +1,29 @@
+package com.morphgame.morphgame;
+
+
+import java.io.File;
+import java.util.Scanner;
+
+import android.util.Log;
+
+
+public class LeaderBoard {
+	
+	Scanner in;
+	File file;
+	public LeaderBoard(){
+		 file = new File("Leaderboard.txt");
+	}
+	
+	private void newScore(String data) {
+	   
+	}
+
+	private String getScores(){
+		
+		
+		
+		return null;
+	}
+
+}

@@ -1,0 +1,149 @@
+package com.morphgame.morphgame;
+
+import android.database.sqlite.*;
+
+//For this I am using SQLite to store our leaderboard data
+//this is just a temporary solution so we can work on other features
+//We will be storing our data using google play game services on the app version
+
+public class LeaderBoard extends SQLiteOpenHelper{
+	
+	  public static final String TABLE_COMMENTS = "comments";
+	  public static final String COLUMN_ID = "_id";
+	  public static final String COLUMN_NAME = "name";
+	  public static final String COLUMN_SCORE = "score";
+
+	  private static final String DATABASE_NAME = "leaderboard.db";
+	  private static final int DATABASE_VERSION = 1;
+
+	  
+	  // Database creation sql statement
+	  private static final String DATABASE_CREATE = "create table "
+	      + TABLE_COMMENTS + "(" + COLUMN_ID
+	      + " integer primary key autoincrement, " + COLUMN_NAME
+	      + " text not null, COLUMN_SCORE text not null); ";
+	  
+	public LeaderBoard(){
+		id = 0;
+		c = null;
+		stmt = null;
+		try {
+	      
+	    
+	      if (tables.next()) {
+	    	  //CODE to delete table was using it for testing
+	    	  /*
+	    	  stmt = c.createStatement();
+		      sql = "DELETE FROM LEADERBOARD";
+		      stmt.executeUpdate(sql);
+		      stmt.close();
+		      System.out.println("Table deleted");
+		      System.exit(0);
+		      */
+	    	  
+	      }else{
+	    	  stmt = c.createStatement();
+		      sql = "CREATE TABLE LEADERBOARD " +
+		    	  	"(ID INT PRIMARY KEY  NOT NULL," +
+		    		"NAME	TEXT	NOT NULL," +
+		    		"SCORE 	INT		NOT NULL)"; 
+		      stmt.executeUpdate(sql);
+		      stmt.close();
+		      
+	    	  stmt = c.createStatement();
+		      sql = "ALTER TABLE LEADERBOARD ID = 1";
+		      stmt.executeUpdate(sql);
+		      stmt.close();
+
+		      System.out.println("Created Table");
+	      }	   
+	      System.out.println("Opened database successfully");
+	      c.close();
+	    } catch ( Exception e ) {
+	      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+	      System.exit(0);
+	    }
+	    
+	}
+	
+	public void newScore(int a){
+		score = a; 
+	}
+	
+	public void insertScore(String n){
+		PreparedStatement stmt1 = null;
+		name = n;
+		
+		try {
+			c = DriverManager.getConnection("jdbc:sqlite:leaderboard.db");
+			c.setAutoCommit(false);
+			stmt = c.createStatement();
+		ResultSet rs = stmt.executeQuery( "SELECT * FROM LEADERBOARD;" );	
+		if(rs.next()){
+	  		sql = "INSERT INTO LEADERBOARD (ID,NAME,SCORE) " +
+	  			  "VALUES ((SELECT max(ID) FROM LEADERBOARD)+1,?,?)";
+		}else{
+			sql = "INSERT INTO LEADERBOARD (ID,NAME,SCORE) " +
+		  			 "VALUES (1,?,?)";
+		}
+		
+		stmt1 =c.prepareStatement(sql);
+        stmt1.setString(1, name);
+        stmt1.setInt(2, score);
+  		stmt1.executeUpdate();
+		
+  		stmt.close();
+  		stmt1.close();
+    	c.commit();
+      	c.close();
+      	 System.out.println("inserted in database successfully");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public String getScores(int num){
+    	String output = "";
+		try {
+			c = DriverManager.getConnection("jdbc:sqlite:leaderboard.db");
+		
+  		stmt = c.createStatement();
+	  	ResultSet rs = stmt.executeQuery( "SELECT * FROM LEADERBOARD ORDER BY SCORE DESC;" );
+	  	
+	  	int i = 0;
+	  	while(rs.next() && i < num){
+	  		id = rs.getInt("id");
+	  		name = rs.getString("name");
+	  		score = rs.getInt("score");
+	  		output+= i+1 + " " + name +" " + score + "\n" + " ";
+	  		i++;
+	  	}
+	  
+	  	rs.close();
+	  	stmt.close();
+	  	c.close();
+    	} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return output;
+	}	
+	
+	public Integer getScore(){
+		return score;
+	}
+
+	@Override
+	public void onCreate(SQLiteDatabase db) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+		// TODO Auto-generated method stub
+		
+	}
+}

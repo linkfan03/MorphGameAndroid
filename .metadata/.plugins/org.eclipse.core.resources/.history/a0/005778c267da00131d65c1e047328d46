@@ -1,0 +1,40 @@
+package com.morphgame.morphgame;
+import android.app.Activity;
+import java.io.*;
+
+import android.content.Context;
+
+public class LeaderBoard extends Activity{
+	public void save(String filename, String data)
+	{
+	    try
+	    {
+	        FileOutputStream fos = openFileOutput(filename, Context.MODE_PRIVATE);
+	        fos.write(data.getBytes());
+	        fos.close();
+	    }
+	    catch (Exception ex)
+	    {
+	        
+	    }
+	}
+	
+	public String read(String filename)
+	{
+	    try
+	    {
+	        FileInputStream fis = openFileInput(filename);
+	        BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
+	        String line = null, input="";
+	        while ((line = reader.readLine()) != null)
+	            input += line;
+	        reader.close();
+	        fis.close();
+	        return input;
+	    }
+	    catch (Exception ex)
+	    {
+	        return "";
+	    }
+	}
+}
