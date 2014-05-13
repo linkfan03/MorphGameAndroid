@@ -27,8 +27,6 @@ public class MorphGame extends AndroidGame {
 
         InputStream is = getResources().openRawResource(R.raw.map1);
         map = convertStreamToString(is);
-        is = getResources().openRawResource(R.raw.map2);
-        map2 = convertStreamToString(is);
 
         return new SplashLoadingScreen(this);
 

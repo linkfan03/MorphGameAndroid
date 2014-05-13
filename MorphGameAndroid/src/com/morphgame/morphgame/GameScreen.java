@@ -199,14 +199,20 @@ public class GameScreen extends Screen {
 					mainCharacter.setDucked(true);
 					mainCharacter.setSpeedX(0);
 
+				}else if(event.x<200){
+					mainCharacter.setMovingRight(false);
+					mainCharacter.moveLeft();
+					mainCharacter.setMovingLeft(true);
 				}
 
-				if (event.x > 400) {
+				else if (event.x > 400) {
 					// Move right.
+					mainCharacter.setMovingLeft(false);
 					mainCharacter.moveRight();
 					mainCharacter.setMovingRight(true);
 					
 				}
+				
 
 			}
 
@@ -226,6 +232,9 @@ public class GameScreen extends Screen {
 				if (event.x > 400) {
 					// Move right.
 					mainCharacter.stopRight();
+				}
+				if(event.x< 200){
+					mainCharacter.stopLeft();
 				}
 			}
 
