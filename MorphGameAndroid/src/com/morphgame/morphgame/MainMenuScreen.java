@@ -2,6 +2,8 @@ package com.morphgame.morphgame;
 
 import java.util.List;
 
+import android.os.Bundle;
+
 import com.morphgame.framework.Game;
 import com.morphgame.framework.Graphics;
 import com.morphgame.framework.Screen;
@@ -27,13 +29,8 @@ public class MainMenuScreen extends Screen {
                     //START GAME
                     game.setScreen(new GameScreen(game));               
             	}
-                
-                if (inBounds(event, 250, 350, 250, 450)) {
-                    //START GAME
-                    game.setScreen(new GameScreen(game));               
-            	}
-                
-                else if(inBounds(event, 500, 350, 750, 450)){
+
+                else if(inBounds(event, 500, 350, 300, 450)){
                 	
                 	//Go to Instructions Menu
                 	game.setScreen(new InstructionScreen(game));

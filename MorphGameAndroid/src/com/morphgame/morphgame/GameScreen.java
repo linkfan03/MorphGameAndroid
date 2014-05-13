@@ -2,6 +2,7 @@ package com.morphgame.morphgame;
 
 import java.util.ArrayList;
 
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,8 +26,6 @@ public class GameScreen extends Screen {
 
 	private static Background bg1, bg2;
 	private static MainCharacter mainCharacter;
-	
-	private static LeaderBoard leaderBoard;
 
 	private Image currentSprite, character, characterForward, characterBack, characterDown, characterJump;
 
@@ -43,7 +42,7 @@ public class GameScreen extends Screen {
 		bg1 = new Background(0, 0);
 		bg2 = new Background(2160, 0);
 		mainCharacter = new MainCharacter();
-
+		
 		
 		squareImages();
 		currentSprite = character;
@@ -314,11 +313,15 @@ public class GameScreen extends Screen {
 			if (event.type == TouchEvent.TOUCH_DOWN) {
 				//return
 				//inBounds(TouchEvent event, int x, int y, int width, int height)
-				if (inBounds(event, 400, 360, 100, 60)) {
+				/*if (inBounds(event, 300, 340, 200, 60)) {
 					nullify();
 					game.setScreen(new MainMenuScreen(game));
-					return;
+					return;*/
+				if (inBounds(event, 300, 340, 200, 60)) {
+					state = GameState.LeaderBoard;
+					
 				}
+				
 			}
 		}
 	}
@@ -425,9 +428,9 @@ public class GameScreen extends Screen {
 	private void drawGameOverUI() {
 		Graphics g = game.getGraphics();
 		g.drawRect(0, 0, 1281, 801, Color.BLACK);
-		g.drawString("GAME OVER.", 400, 200, paint2);
-		g.drawString("Score: " + mainCharacter.getScore(),400,280,paint4);
-		g.drawString("Return", 400, 360, paint4);
+		g.drawString("GAME OVER.", 400, 100, paint2);
+		g.drawString("Submit Score: " + mainCharacter.getScore(),400,240,paint4);
+		g.drawString("Return", 400, 380, paint4);
 		
 		
 
@@ -436,7 +439,7 @@ public class GameScreen extends Screen {
 		//displays top ten in leaderboard
 		Graphics g = game.getGraphics();
 		g.drawRect(0, 0, 1281, 801, Color.BLACK);
-		g.drawString(leaderBoard.getScores(10),275,0,paint);
+		g.drawString("Test",275,10,paint);
 	}
 
 	@Override

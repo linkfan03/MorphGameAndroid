@@ -1,6 +1,7 @@
 package com.morphgame.morphgame;
 
 import com.morphgame.framework.Game;
+
 import com.morphgame.framework.Graphics;
 import com.morphgame.framework.Screen;
 import com.morphgame.framework.Graphics.ImageFormat;
@@ -8,6 +9,7 @@ import com.morphgame.framework.Graphics.ImageFormat;
 public class LoadingScreen extends Screen {
 	public LoadingScreen(Game game) {
         super(game);
+
     }
 
 
@@ -48,7 +50,6 @@ public class LoadingScreen extends Screen {
         Assets.tilegrassRight = g.newImage("tilegrassright.png", ImageFormat.RGB565);
 		Assets.tileSpike = g.newImage("tileSpike.png", ImageFormat.RGB565);
         
-
         //Show the menu screen
         game.setScreen(new MainMenuScreen(game));
 
