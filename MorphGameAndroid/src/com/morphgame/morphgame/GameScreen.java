@@ -18,6 +18,8 @@ import com.morphgame.framework.Image;
 import com.morphgame.framework.Screen;
 import com.morphgame.framework.Input.TouchEvent;
 
+//the gamescreen class sets up the screen that the game is played on. 
+
 public class GameScreen extends Screen {
 	enum GameState {
 		Ready, Running, Paused, GameOver, LeaderBoard
