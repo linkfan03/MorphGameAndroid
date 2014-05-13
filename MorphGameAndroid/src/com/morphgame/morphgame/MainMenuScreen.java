@@ -35,6 +35,10 @@ public class MainMenuScreen extends Screen {
                 	//Go to Instructions Menu
                 	game.setScreen(new InstructionScreen(game));
                 }
+                
+                else if(inBounds(event,200,200,400,100)){
+                	 game.setScreen(new LeaderboardScreen(game));   
+                }
             }
         }
     }

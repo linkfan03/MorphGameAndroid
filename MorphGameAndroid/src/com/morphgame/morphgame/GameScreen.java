@@ -158,8 +158,6 @@ public class GameScreen extends Screen {
 			updatePaused(touchEvents);
 		if (state == GameState.GameOver)
 			updateGameOver(touchEvents);
-		if( state == GameState.LeaderBoard)
-			updateLeaderBoard();
 	}
 
 	
@@ -313,12 +311,17 @@ public class GameScreen extends Screen {
 			if (event.type == TouchEvent.TOUCH_DOWN) {
 				//return
 				//inBounds(TouchEvent event, int x, int y, int width, int height)
-				/*if (inBounds(event, 300, 340, 200, 60)) {
-					nullify();
-					game.setScreen(new MainMenuScreen(game));
-					return;*/
 				if (inBounds(event, 300, 340, 200, 60)) {
-					state = GameState.LeaderBoard;
+					nullify();
+					goToMenu();
+					return;
+				}if (inBounds(event, 200, 220, 400, 60)) {
+					//TODO ask for user name 
+					//Add score + name to database
+					//send user to menu
+					
+					
+					
 					
 				}
 				
@@ -326,10 +329,7 @@ public class GameScreen extends Screen {
 		}
 	}
 	
-	private void updateLeaderBoard() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	private void updateTiles() {
 
@@ -362,8 +362,7 @@ public class GameScreen extends Screen {
 			drawPausedUI();
 		if (state == GameState.GameOver)
 			drawGameOverUI();
-		if(state == GameState.LeaderBoard)
-			drawLeaderBoard();
+
 	}
 
 	private void paintTiles(Graphics g) {
@@ -435,12 +434,7 @@ public class GameScreen extends Screen {
 		
 
 	}
-	private void drawLeaderBoard(){
-		//displays top ten in leaderboard
-		Graphics g = game.getGraphics();
-		g.drawRect(0, 0, 1281, 801, Color.BLACK);
-		g.drawString("Test",275,10,paint);
-	}
+
 
 	@Override
 	public void pause() {
